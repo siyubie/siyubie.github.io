@@ -10,8 +10,13 @@
     z-index: 10000;
 }
 
-.bg-bottom {
+/* .bg-bottom {
     background-color: var(--h-title-color);
+} */
+
+.bg-bottom {
+    background-color: #1c2c4c; /* 应用我们新选择的深蓝色 */
+    color: rgba(255, 255, 255, 0.75) !important; /* 设置默认文字颜色为半透明白色 */
 }
 
 .top-section {
