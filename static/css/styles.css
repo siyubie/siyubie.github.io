@@ -10909,6 +10909,20 @@ footer a:hover, footer a:active, footer a:focus {
   text-decoration: underline;
 }
 
+/* 将选择器从 'footer a' 改为 '.footer-text' */
+.footer-text {
+  color: #FFFFFF; /* 改为纯白色 */
+  text-decoration: none;
+  /* 添加一个平滑的颜色过渡效果 */
+  transition: color 0.2s ease-in-out;
+}
+
+/* 同样，修改 hover 状态的选择器 */
+.footer-text:hover, .footer-text:active, .footer-text:focus {
+  color: #FFFFFF; /* 鼠标悬浮时保持纯白色 */
+  text-decoration: underline;
+}
+
 
 
 
