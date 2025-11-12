@@ -41,7 +41,7 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-.top-section{
+/* .top-section{
   background-image: image-set(
     /* url('static/assets/img/background.webp') type('image/webp'), */
     url('static/assets/img/background.jpg') type('image/jpeg')
@@ -52,7 +52,7 @@
 }
 @media (max-width: 768px){
   .top-section{ min-height: 28vh; } /* 移动端更快首屏 */
-}
+} */
 
 
 section header h2{
