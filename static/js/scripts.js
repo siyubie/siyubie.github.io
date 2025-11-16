@@ -48,42 +48,42 @@ window.addEventListener('DOMContentLoaded', event => {
         .catch(error => console.log(error));
 
 
-    // // Marked
-    // marked.use({ mangle: false, headerIds: false })
-    // section_names.forEach((name, idx) => {
-    //     fetch(content_dir + name + '.md')
-    //         .then(response => response.text())
-    //         .then(markdown => {
-    //             const html = marked.parse(markdown);
-    //             document.getElementById(name + '-md').innerHTML = html;
-    //         }).then(() => {
-    //             // MathJax
-    //             MathJax.typeset();
-    //         })
-    //         .catch(error => console.log(error));
-    // })
-
-    // 修改：加载预构建的HTML内容而不是Markdown
+    // Marked
+    marked.use({ mangle: false, headerIds: false })
     section_names.forEach((name, idx) => {
-        // 使用预构建的HTML文件
-        fetch(built_content_dir + name + '.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(html => {
+        fetch(content_dir + name + '.md')
+            .then(response => response.text())
+            .then(markdown => {
+                const html = marked.parse(markdown);
                 document.getElementById(name + '-md').innerHTML = html;
-                
-                // MathJax - 保持不变
+            }).then(() => {
+                // MathJax
                 MathJax.typeset();
             })
-            .catch(error => {
-                console.log(`Error loading ${name}:`, error);
-                // 降级方案：显示加载中或错误信息
-                document.getElementById(name + '-md').innerHTML = '<p>Content loading...</p>';
-            });
+            .catch(error => console.log(error));
     })
+
+    // // 修改：加载预构建的HTML内容而不是Markdown
+    // section_names.forEach((name, idx) => {
+    //     // 使用预构建的HTML文件
+    //     fetch(built_content_dir + name + '.html')
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! status: ${response.status}`);
+    //             }
+    //             return response.text();
+    //         })
+    //         .then(html => {
+    //             document.getElementById(name + '-md').innerHTML = html;
+                
+    //             // MathJax - 保持不变
+    //             MathJax.typeset();
+    //         })
+    //         .catch(error => {
+    //             console.log(`Error loading ${name}:`, error);
+    //             // 降级方案：显示加载中或错误信息
+    //             document.getElementById(name + '-md').innerHTML = '<p>Content loading...</p>';
+    //         });
+    // })
 
 }); 
