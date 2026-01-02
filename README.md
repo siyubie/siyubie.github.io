@@ -1,5 +1,9 @@
 
 
+This site is based on the academic homepage template by [senli1073](https://github.com/senli1073), , originally forked from the [template](https://github.com/senli1073/academic-homepage-template).
+
+<!-- 
+
 ![Github Forks](https://img.shields.io/github/forks/senli1073/senli1073.github.io?style=flat)
 ![Github Stars](https://img.shields.io/github/stars/senli1073/senli1073.github.io?style=flat)
 ![License](https://img.shields.io/github/license/senli1073/senli1073.github.io)
@@ -73,4 +77,4 @@ Fire up a browser and go to `https://<username>.github.io`
 
 ## License
 
-Copyright Sen Li, 2023-2025. Licensed under an MIT license. You can copy and mess with this template.
+Copyright Sen Li, 2023-2025. Licensed under an MIT license. You can copy and mess with this template. -->
