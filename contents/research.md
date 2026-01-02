@@ -5,8 +5,8 @@
 
 #### Working Papers
 
-- Cross-Market News Sentiment and Trading Volume.  
- with <a href="https://gavinfeng702.com/" target="_blank">Guanhao Feng</a>, Naixin Guo and <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, 2025.
+- One News, Two Markets: LLM-Derived Sentiment and Trading Volume.  
+ with <a href="https://gavinfeng702.com/" target="_blank">Guanhao Feng</a>, Naixin Guo and <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, 2025. Under review. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5994158" target="_blank">[Paper]</a>
 
 - Loan Loss Predictability from Macroeconomic Factors.  
  with <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, <a href="https://sites.google.com/view/sehwakim" target="_blank">Sehwa Kim</a> and <a href="https://www.yao-lu.net/" target="_blank">Yao Lu</a>, 2025. Under review. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5834282" target="_blank">[Paper]</a>
@@ -24,7 +24,7 @@
 
 <p><strong>2025</strong></p>
 <ul>
-  <li>38th Australasian Finance and Banking Conference, Sydney (scheduled)</li>
+  <li>38th Australasian Finance and Banking Conference, Sydney</li>
   <li>Accounting Workshop*, SC Johnson College of Business, Cornell University</li>
   <li>Chicago Booth Banking Workshop*, University of Chicago</li>
   <li>2025 NYU Four-School Accounting Research Conference*, New York</li>
