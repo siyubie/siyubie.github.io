@@ -1,7 +1,7 @@
 
 
 const content_dir = 'contents/'
-const built_content_dir = 'contents/content_built/'
+// const built_content_dir = 'contents/content_built/'
 const config_file = 'config.yml'
 const section_names = ['home', 'research', 'teaching', 'cv', 'events']
 
