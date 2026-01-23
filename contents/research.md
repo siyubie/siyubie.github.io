@@ -1,6 +1,6 @@
 #### Publications
 
-- Siyu Bie, Guanhao Feng, Naixin Guo, and Jingyu He. "Can news predict firm bankruptcy?." Journal of Financial Markets (2025): 101002. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5022837" target="_blank">[Paper]</a>
+- Bie,Siyu, Guanhao Feng, Naixin Guo, and Jingyu He. "Can news predict firm bankruptcy?." Journal of Financial Markets (2025): 101002. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5022837" target="_blank">[Paper]</a>
 
 
 #### Working Papers
