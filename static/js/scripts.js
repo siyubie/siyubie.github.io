@@ -84,6 +84,17 @@ window.addEventListener('DOMContentLoaded', event => {
                 // 降级方案：显示加载中或错误信息
                 document.getElementById(name + '-md').innerHTML = '<p>Content loading...</p>';
             });
-    })
+    });
+
+    Promise.all(sectionPromises).then(() => {
+    // 只在全部内容都插入 DOM 后，做一次 MathJax 排版
+        if (window.MathJax) {
+            const ready = (MathJax.startup && MathJax.startup.promise) ? MathJax.startup.promise : Promise.resolve();
+            ready.then(() => {
+            if (MathJax.typesetPromise) return MathJax.typesetPromise();
+            MathJax.typeset();
+            });
+        }
+    });
 
 }); 
