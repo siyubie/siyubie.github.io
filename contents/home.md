@@ -6,5 +6,5 @@ Email: siyubie2-c@my.cityu.edu.hk | <a href="https://scholar.google.com/citation
 <p></p>
 
 #### Education
-Ph.D., Department of Decision Analytics and Operations (Joint Program), City University of Hong Kong, 2023-2026 (expected).\
+Ph.D., Department of Decision Analytics and Operations (Joint Program), City University of Hong Kong, 2023-2026 (expected).
 Ph.D., School of Statistics, East China Normal University, 2022-2026 (expected).
