@@ -5,6 +5,14 @@
     --h-title-color:#3948d2;
 }
 
+body.site-preparing {
+    visibility: hidden;
+}
+
+body.site-ready {
+    visibility: visible;
+}
+
 .header {
     border-bottom: solid 2px var(--bs-blue);
     z-index: 10000;

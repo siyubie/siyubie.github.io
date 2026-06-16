@@ -47,16 +47,30 @@
 
     <!-- background image -->
     <link rel="preload" as="image" href="static/assets/img/background.jpg">
+    <script>
+        window.__siteRevealFallback = setTimeout(function () {
+            function revealPage() {
+                document.body.classList.add('site-ready');
+                document.body.classList.remove('site-preparing');
+            }
+            if (document.body) {
+                revealPage();
+            } else {
+                document.addEventListener('DOMContentLoaded', revealPage, { once: true });
+            }
+        }, 2500);
+    </script>
+    <noscript><style>body.site-preparing { visibility: visible; }</style></noscript>
 
 
 
 </head>
 
-<body id="page-top">
+<body id="page-top" class="site-preparing" data-prerendered="true">
     <!-- Navigation-->
     <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
         <div class="container px-5">
-            <a id="page-top-title" class="navbar-brand fw-bold" href="#page-top"></a>
+            <a id="page-top-title" class="navbar-brand fw-bold" href="#page-top">Siyu Bie&ensp;|&ensp;别思羽</a>
             <!-- <a href="#page-top"><img src="static/assets/img/CUMT_LOGO.svg" style="width: 11rem;"></a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,10 +133,16 @@
     <section class="bg-gradient-primary-to-secondary-light mt5 md5" id="home">
         <div class="container px-5">
             <header>
-                <h2 id="home-subtitle"> </h2>
+                <h2 id="home-subtitle">About Me</h2>
                 <!-- <span class="bi bi-list"></span> -->
             </header>
-            <div class="main-body" id="home-md"></div>
+            <div class="main-body" id="home-md"><p>I am currently a joint Ph.D. candidate in Finance and Business Statistics at the Department of Decision Analytics and Operations, City University of Hong Kong, and in Statistics at the School of Statistics, East China Normal University. My research focuses on FinTech, empirical asset pricing, and financial econometrics. During my Ph.D. studies, I am also affiliated with the <a href="https://hkaift.com/" target="_blank" style="color: black; text-decoration: none;">Laboratory for AI-Powered Financial Technologies (AIFT)</a>, where I translate academic insights into FinTech applications, powered by large language models for financial analytics.</p>
+<p>Email: siyubie2-c@my.cityu.edu.hk | <a href="https://scholar.google.com/citations?user=t3hnM8UAAAAJ&hl=en" target="_blank">Google Scholar</a> | <a href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=6815019" target="_blank">SSRN</a></p>
+<p></p>
+<!-- #### Education
+Ph.D., Department of Decision Analytics and Operations (Joint Program), City University of Hong Kong, 2023-2026 (expected).
+Ph.D., School of Statistics, East China Normal University, 2022-2026 (expected). -->
+</div>
         </div>
     </section>
     <!-- Home -->
@@ -134,7 +154,46 @@
                 <!-- <h2 id="publications-subtitle"><i class="bi bi-file-text-fill"></i>&nbsp;RESEARCH</h2> -->
                 <h2 id="research-subtitle">RESEARCH</h2>
             </header>
-            <div class="main-body" id="research-md"></div>
+            <div class="main-body" id="research-md"><h4>Publications</h4>
+<ul>
+<li>Siyu Bie, Guanhao Feng, Naixin Guo, and Jingyu He. "Can news predict firm bankruptcy?." Journal of Financial Markets (2025): 101002. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5022837" target="_blank">[Paper]</a></li>
+</ul>
+<h4>Working Papers</h4>
+<ul>
+<li>One News, Two Markets: LLM-Derived Sentiment and Trading Volume.
+with <a href="https://gavinfeng702.com/" target="_blank">Guanhao Feng</a>, Naixin Guo and <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, 2025. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5994158" target="_blank">[Paper]</a></li>
+<li>Loan Loss Predictability from Macroeconomic Factors.
+with <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, <a href="https://sites.google.com/view/sehwakim" target="_blank">Sehwa Kim</a> and <a href="https://www.yao-lu.net/" target="_blank">Yao Lu</a>, 2025. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5834282" target="_blank">[Paper]</a></li>
+<li>Machine Learning and the Yield Curve: Tree-Based Macroeconomic Regime Switching.
+with <a href="https://www.sas.upenn.edu/~fdiebold/" target="_blank">Francis X. Diebold</a>, <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a> and <a href="https://www.fdsm.fudan.edu.cn/en/teacher-info.html?UID=012130" target="_blank">Junye Li</a>, 2024. Reject and Resubmit, Journal of the American
+Statistical Association. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4934442" target="_blank">[Paper]</a></li>
+</ul>
+<!-- #### Presentations
+
+<p><strong>2026</strong></p>
+<ul>
+  <li>Hawaii Accounting Research Conference (HARC) 2026*, Hawaii (scheduled)</li>
+</ul>
+
+<p><strong>2025</strong></p>
+<ul>
+  <li>38th Australasian Finance and Banking Conference, Sydney</li>
+  <li>Accounting Workshop*, SC Johnson College of Business, Cornell University</li>
+  <li>Chicago Booth Banking Workshop*, University of Chicago</li>
+  <li>2025 NYU Four-School Accounting Research Conference*, New York</li>
+  <li>4th Hong Kong Conference for FinTech, AI, and Big Data in Business (poster), Hong Kong</li>
+</ul>
+
+<p><strong>2024</strong></p>
+<ul>
+  <li>Financial Econometrics Meets Machine Learning (FinEML) Conference 2024, USI Lugano</li>
+  <li>5th Symposium on Big Data Econometrics Theory and Applications, Changsha</li>
+  <li>Big Data and Artificial Intelligence in Econometrics, Finance, and Statistics*, University of Chicago</li>
+  <li>EAC-ISBA Conference 2024 (poster), Hong Kong</li>
+</ul>
+
+<p><em>(* indicates by co-author)</em></p> -->
+</div>
 
         </div>
     </section>
@@ -158,7 +217,17 @@
             <header>
                 <h2 id="teaching-subtitle">TEACHING </h2>
             </header>
-            <div class="main-body" id="teaching-md"></div>
+            <div class="main-body" id="teaching-md"><p><strong>City University of Hong Kong, Teaching Assistant</strong></p>
+<ul>
+<li>Predictive Modeling in Marketing, 2024</li>
+<li>Business Statistics, 2023, 2024</li>
+<li>Data-driven Business Modeling, 2023</li>
+</ul>
+<p><strong>East China Normal University, Teaching Assistant</strong></p>
+<ul>
+<li>Bayesian Statistics, 2023</li>
+</ul>
+</div>
 
         </div>
     </section>
@@ -170,7 +239,10 @@
             <header>
                 <h2 id="cv-subtitle">CV </h2>
             </header>
-            <div class="main-body" id="cv-md"></div>
+            <div class="main-body" id="cv-md"><!-- [Curriculum Vitae](https://www.dropbox.com/scl/fi/vutwpnwqtqhcrgwq56xl8/CV.pdf?rlkey=rff2arb5i59umvfbb5wjrpwde&st=cnyvqfpq&dl=0) -->
+<p><a href="static/assets/doc/CV_EN.pdf" target="_blank"> Curriculum Vitae (English)</a></p>
+<p><a href="static/assets/doc/CV_CH.pdf" target="_blank"> Curriculum Vitae (Chinese)</a></p>
+</div>
 
         </div>
     </section>
@@ -182,7 +254,8 @@
             <header>
                 <h2 id="events-subtitle">EVENTS </h2>
             </header>
-            <div class="main-body" id="events-md"></div>
+            <div class="main-body" id="events-md"><p>Coming soon.</p>
+</div>
 
         </div>
     </section>
@@ -194,7 +267,7 @@
         <div class="container px-5">
             <div class="text-white-50 small">
             <div class="text small"></div>
-                <!-- <div id="copyright-text" class="mb-2"></div> -->
+                <!-- <div id="copyright-text" class="mb-2">&copy; Siyu Bie 2025. </div> -->
                 <span id="copyright-text" class="footer-text"></span>
 
                 <a id="github-link" href="https://github.com/siyubie" class="footer-text" target="_blank" rel="noopener noreferrer">Github</a>
