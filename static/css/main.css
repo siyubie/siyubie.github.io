@@ -79,7 +79,7 @@ section .main-body{
 }
 
 section:not(.top-section) {
-    padding-top: 3rem;
+    padding-top: 40px;
 }
 
 
