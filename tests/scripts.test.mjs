@@ -6,9 +6,6 @@ import vm from 'node:vm';
 const sectionFetches = [
   'contents/home.md',
   'contents/research.md',
-  'contents/teaching.md',
-  'contents/cv.md',
-  'contents/events.md',
 ];
 
 function createScriptContext({ prerendered = false } = {}) {

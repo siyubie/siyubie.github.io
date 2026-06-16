@@ -3,6 +3,7 @@ from pathlib import Path
 
 
 SECTIONS = ["home", "research", "teaching", "cv", "events"]
+INDEX_SECTIONS = ["home", "research"]
 CONFIG_IDS = ["page-top-title", "top-section-bg-text", "home-subtitle", "copyright-text"]
 
 
@@ -178,7 +179,8 @@ def build_site():
     for key in CONFIG_IDS:
         index_html = replace_element_content(index_html, key, config.get(key, ""))
 
-    for section, html_content in rendered_sections.items():
+    for section in INDEX_SECTIONS:
+        html_content = rendered_sections[section]
         index_html = replace_element_content(index_html, f"{section}-md", html_content)
 
     index_path.write_text(index_html, encoding="utf-8", newline="\n")
