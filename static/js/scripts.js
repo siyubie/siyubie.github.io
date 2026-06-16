@@ -50,15 +50,12 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Marked
     marked.use({ mangle: false, headerIds: false })
-    section_names.forEach((name, idx) => {
-        fetch(content_dir + name + '.md')
+    const sectionPromises = section_names.map((name, idx) => {
+        return fetch(content_dir + name + '.md')
             .then(response => response.text())
             .then(markdown => {
                 const html = marked.parse(markdown);
                 document.getElementById(name + '-md').innerHTML = html;
-            }).then(() => {
-                // MathJax
-                MathJax.typeset();
             })
             .catch(error => console.log(error));
     })
@@ -92,7 +89,7 @@ window.addEventListener('DOMContentLoaded', event => {
             const ready = (MathJax.startup && MathJax.startup.promise) ? MathJax.startup.promise : Promise.resolve();
             ready.then(() => {
             if (MathJax.typesetPromise) return MathJax.typesetPromise();
-            MathJax.typeset();
+            if (MathJax.typeset) MathJax.typeset();
             });
         }
     });
