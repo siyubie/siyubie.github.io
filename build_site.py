@@ -124,10 +124,15 @@ def replace_element_content(html, element_id, content):
     pattern = re.compile(
         rf'(<(?P<tag>[a-zA-Z0-9]+)(?P<attrs>[^>]*\bid="{re.escape(element_id)}"[^>]*)>)([\s\S]*?)(</(?P=tag)>)'
     )
-    updated, count = pattern.subn(lambda match: f"{match.group(1)}{content}{match.group(5)}", html, count=1)
-    if count != 1:
-        raise ValueError(f"Could not find element with id={element_id}")
-    return updated
+    for match in pattern.finditer(html):
+        last_comment_open = html.rfind("<!--", 0, match.start())
+        last_comment_close = html.rfind("-->", 0, match.start())
+        if last_comment_open > last_comment_close:
+            continue
+
+        return html[: match.start()] + f"{match.group(1)}{content}{match.group(5)}" + html[match.end() :]
+
+    raise ValueError(f"Could not find visible element with id={element_id}")
 
 
 def set_body_prerendered(html):

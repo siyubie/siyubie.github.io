@@ -16,3 +16,12 @@ test('index.html contains pre-rendered section content', async () => {
 
   assert.match(html, /<body id="page-top" class="site-preparing" data-prerendered="true">/);
 });
+
+test('index.html contains visible footer copyright text', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+
+  assert.match(
+    html,
+    /<span id="copyright-text" class="footer-text">&copy; Siyu Bie 2025\. <\/span>/
+  );
+});
