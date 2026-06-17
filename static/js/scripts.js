@@ -5,6 +5,8 @@ const content_dir = 'contents/'
 const config_file = 'config.yml'
 const section_names = ['home', 'research']
 const ready_timeout_ms = 2500
+const min_hero_height = 240
+const max_hero_height = 720
 
 function revealPage() {
     if (window.__siteRevealFallback) {
@@ -41,6 +43,32 @@ function bindPageTopLinks() {
             event.preventDefault();
             scrollToPageTop();
         });
+    });
+}
+
+function clampNumber(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+}
+
+function fitHeroHeightToHome() {
+    const topSection = document.querySelector('.top-section');
+    const homeSection = document.getElementById('home');
+    const root = document.documentElement;
+
+    if (!topSection || !homeSection || !root) {
+        return;
+    }
+
+    const viewportHeight = window.innerHeight || root.clientHeight;
+    const homeHeight = homeSection.getBoundingClientRect().height;
+    const heroHeight = clampNumber(viewportHeight - homeHeight, min_hero_height, max_hero_height);
+
+    root.style.setProperty('--hero-height', `${Math.round(heroHeight)}px`);
+}
+
+function bindHeroFitResize() {
+    window.addEventListener('resize', () => {
+        window.requestAnimationFrame(fitHeroHeightToHome);
     });
 }
 
@@ -91,6 +119,8 @@ window.addEventListener('DOMContentLoaded', event => {
 
     restorePageTopScrollPosition();
     bindPageTopLinks();
+    fitHeroHeightToHome();
+    bindHeroFitResize();
 
     // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
@@ -181,7 +211,10 @@ window.addEventListener('DOMContentLoaded', event => {
     Promise.all([configPromise, ...sectionPromises])
         .then(typesetMath)
         .then(() => waitWithTimeout(Promise.all([waitForBackgroundImage(), waitForFonts()]), ready_timeout_ms))
-        .then(revealPage)
+        .then(() => {
+            fitHeroHeightToHome();
+            revealPage();
+        })
         .catch(error => {
             console.log(error);
             revealPage();

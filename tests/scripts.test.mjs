@@ -8,11 +8,12 @@ const sectionFetches = [
   'contents/research.md',
 ];
 
-function createScriptContext({ prerendered = false } = {}) {
+function createScriptContext({ homeHeight = 414, prerendered = false, viewportHeight = 900 } = {}) {
   const listeners = {};
   const elements = new Map();
   const fetchCalls = [];
   const scrollCalls = [];
+  const rootStyleProperties = new Map();
   const pageTopLinkListeners = [];
   const classes = new Set(prerendered ? ['site-preparing'] : []);
 
@@ -20,6 +21,7 @@ function createScriptContext({ prerendered = false } = {}) {
     if (!elements.has(id)) {
       elements.set(id, {
         id,
+        getBoundingClientRect: () => ({ height: id === 'home' ? homeHeight : 0 }),
         innerHTML: prerendered && id.endsWith('-md') ? '<p>Pre-rendered content</p>' : '',
       });
     }
@@ -39,7 +41,18 @@ function createScriptContext({ prerendered = false } = {}) {
     fonts: {
       ready: Promise.resolve(),
     },
+    documentElement: {
+      style: {
+        setProperty: (name, value) => rootStyleProperties.set(name, value),
+      },
+    },
     getElementById: getElement,
+    querySelector: (selector) => {
+      if (selector === '.top-section') {
+        return { getBoundingClientRect: () => ({ height: 0 }) };
+      }
+      return null;
+    },
     querySelectorAll: (selector) => {
       if (selector === 'a[href="#page-top"]') {
         return [{
@@ -102,6 +115,7 @@ function createScriptContext({ prerendered = false } = {}) {
         listeners[name] = callback;
       },
       getComputedStyle: () => ({ display: 'none' }),
+      innerHeight: viewportHeight,
       location: {
         hash: '',
       },
@@ -111,7 +125,7 @@ function createScriptContext({ prerendered = false } = {}) {
     },
   };
 
-  return { classes, context, fetchCalls, listeners, pageTopLinkListeners, scrollCalls };
+  return { classes, context, fetchCalls, listeners, pageTopLinkListeners, rootStyleProperties, scrollCalls };
 }
 
 test('scripts.js handles DOMContentLoaded without an undefined sectionPromises error', async () => {
@@ -184,4 +198,22 @@ test('scripts.js scrolls to the real top when the page-top link is clicked', asy
 
   assert.equal(prevented, true);
   assert.deepEqual(scrollCalls, [[0, 0], [0, 0]]);
+});
+
+test('scripts.js fits the hero height to the natural About Me height', async () => {
+  const source = await readFile(new URL('../static/js/scripts.js', import.meta.url), 'utf8');
+  const { context, listeners, rootStyleProperties } = createScriptContext({
+    homeHeight: 414,
+    prerendered: true,
+    viewportHeight: 900,
+  });
+
+  vm.createContext(context);
+  vm.runInContext(source, context);
+
+  listeners.DOMContentLoaded({});
+
+  await new Promise((resolve) => setImmediate(resolve));
+
+  assert.equal(rootStyleProperties.get('--hero-height'), '486px');
 });

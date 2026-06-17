@@ -88,10 +88,6 @@ section:not(.top-section) {
     padding-bottom: 40px;
 }
 
-#home {
-    min-height: calc(100vh - var(--hero-height));
-}
-
 @media (max-height: 800px) {
     #home header h2 {
         line-height: 3.5rem;
