@@ -3,6 +3,7 @@
 
 :root{
     --h-title-color:#3948d2;
+    --hero-height: clamp(260px, 38vh, 340px);
 }
 
 body.site-preparing {
@@ -32,7 +33,7 @@ body.site-ready {
     padding: 0;
     background-position: center;
     background-size: cover;
-    height: clamp(260px, 38vh, 340px);
+    height: var(--hero-height);
 }
 
 .top-section h2 {
@@ -87,6 +88,10 @@ section:not(.top-section) {
     padding-bottom: 40px;
 }
 
+#home {
+    min-height: calc(100vh - var(--hero-height));
+}
+
 @media (max-height: 800px) {
     #home header h2 {
         line-height: 3.5rem;
@@ -98,8 +103,8 @@ section:not(.top-section) {
 }
 
 @media (max-height: 700px) {
-    .top-section {
-        height: 240px;
+    :root {
+        --hero-height: 240px;
     }
 
     #home {
