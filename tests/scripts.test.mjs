@@ -12,6 +12,8 @@ function createScriptContext({ prerendered = false } = {}) {
   const listeners = {};
   const elements = new Map();
   const fetchCalls = [];
+  const scrollCalls = [];
+  const pageTopLinkListeners = [];
   const classes = new Set(prerendered ? ['site-preparing'] : []);
 
   const getElement = (id) => {
@@ -38,7 +40,16 @@ function createScriptContext({ prerendered = false } = {}) {
       ready: Promise.resolve(),
     },
     getElementById: getElement,
-    querySelectorAll: () => [],
+    querySelectorAll: (selector) => {
+      if (selector === 'a[href="#page-top"]') {
+        return [{
+          addEventListener: (name, callback) => {
+            pageTopLinkListeners.push({ name, callback });
+          },
+        }];
+      }
+      return [];
+    },
   };
 
   const context = {
@@ -91,12 +102,16 @@ function createScriptContext({ prerendered = false } = {}) {
         listeners[name] = callback;
       },
       getComputedStyle: () => ({ display: 'none' }),
+      location: {
+        hash: '',
+      },
       MathJax: true,
       requestAnimationFrame: (callback) => callback(),
+      scrollTo: (...args) => scrollCalls.push(args),
     },
   };
 
-  return { classes, context, fetchCalls, listeners };
+  return { classes, context, fetchCalls, listeners, pageTopLinkListeners, scrollCalls };
 }
 
 test('scripts.js handles DOMContentLoaded without an undefined sectionPromises error', async () => {
@@ -134,4 +149,39 @@ test('scripts.js reveals a pre-rendered page without fetching markdown content',
 
   assert.deepEqual(fetchCalls, []);
   assert.equal(classes.has('site-ready'), true);
+});
+
+test('scripts.js resets restored scroll position on the homepage', async () => {
+  const source = await readFile(new URL('../static/js/scripts.js', import.meta.url), 'utf8');
+  const { context, listeners, scrollCalls } = createScriptContext({ prerendered: true });
+
+  vm.createContext(context);
+  vm.runInContext(source, context);
+
+  listeners.DOMContentLoaded({});
+
+  assert.deepEqual(scrollCalls, [[0, 0]]);
+});
+
+test('scripts.js scrolls to the real top when the page-top link is clicked', async () => {
+  const source = await readFile(new URL('../static/js/scripts.js', import.meta.url), 'utf8');
+  const { context, listeners, pageTopLinkListeners, scrollCalls } = createScriptContext({ prerendered: true });
+  let prevented = false;
+
+  vm.createContext(context);
+  vm.runInContext(source, context);
+
+  listeners.DOMContentLoaded({});
+
+  assert.equal(pageTopLinkListeners.length, 1);
+  assert.equal(pageTopLinkListeners[0].name, 'click');
+
+  pageTopLinkListeners[0].callback({
+    preventDefault: () => {
+      prevented = true;
+    },
+  });
+
+  assert.equal(prevented, true);
+  assert.deepEqual(scrollCalls, [[0, 0], [0, 0]]);
 });

@@ -14,6 +14,36 @@ function revealPage() {
     document.body.classList.remove('site-preparing');
 }
 
+function shouldPinToPageTop() {
+    return !window.location.hash || window.location.hash === '#page-top';
+}
+
+function scrollToPageTop() {
+    if (window.scrollTo) {
+        window.scrollTo(0, 0);
+    }
+}
+
+function restorePageTopScrollPosition() {
+    if (window.history && 'scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+    }
+
+    if (shouldPinToPageTop()) {
+        scrollToPageTop();
+    }
+}
+
+function bindPageTopLinks() {
+    const pageTopLinks = document.querySelectorAll('a[href="#page-top"]');
+    pageTopLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            scrollToPageTop();
+        });
+    });
+}
+
 function waitWithTimeout(promise, timeoutMs) {
     return Promise.race([
         promise.catch(() => undefined),
@@ -58,6 +88,9 @@ function typesetMath() {
 
 
 window.addEventListener('DOMContentLoaded', event => {
+
+    restorePageTopScrollPosition();
+    bindPageTopLinks();
 
     // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
