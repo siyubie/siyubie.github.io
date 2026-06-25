@@ -9,7 +9,7 @@
  with <a href="https://gavinfeng702.com/" target="_blank">Guanhao Feng</a>, Naixin Guo and <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, 2025. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5994158" target="_blank">[Paper]</a>
 
 - Loan Loss Predictability from Macroeconomic Factors.<br> 
- with <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, <a href="https://sites.google.com/view/sehwakim" target="_blank">Sehwa Kim</a> and <a href="https://www.yao-lu.net/" target="_blank">Yao Lu</a>, 2025. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5834282" target="_blank">[Paper]</a>
+ with <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a>, <a href="https://sites.google.com/view/sehwakim" target="_blank">Sehwa Kim</a> and <a href="https://www.yao-lu.net/" target="_blank">Yao Lu</a>, 2025. Major revision, Journal of Accounting Research. <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5834282" target="_blank">[Paper]</a>
 
 - Machine Learning and the Yield Curve: Tree-Based Macroeconomic Regime Switching.<br>  
  with <a href="https://www.sas.upenn.edu/~fdiebold/" target="_blank">Francis X. Diebold</a>, <a href="https://jingyuhe.com/" target="_blank">Jingyu He</a> and <a href="https://www.fdsm.fudan.edu.cn/en/teacher-info.html?UID=012130" target="_blank">Junye Li</a>, 2024. Reject and Resubmit, Journal of the American
